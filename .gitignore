@@ -1,0 +1,6 @@
+user_variables_file.py
+*.pyc
+.vscode/
+__pycache__/
+.envrc
+env/

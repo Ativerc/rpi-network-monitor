@@ -1,6 +1,19 @@
 import subprocess, time, logging
+
+import board
+import digitalio
+import RPi.GPIO as GPIO
 # import paho.mqtt.client as mqtt
 # import paho.mqtt.publish as publish
+
+
+#LED SETUP:
+activity_led = digitalio.DigitalInOut(board.D18)
+activity_led.direction = digitalio.Direction.OUTPUT
+redled = digitalio.DigitalInOut(board.D17)
+greenled = digitalio.DigitalInOut(board.D27)
+blueled = digitalio.DigitalInOut(board.D22)
+redled.direction = blueled.direction = greenled.direction = digitalio.Direction.OUTPUT
 
 def check_internet():
     internet_status = 0

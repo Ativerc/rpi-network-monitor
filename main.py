@@ -1,4 +1,4 @@
-import subprocess, time
+import subprocess, time, logging
 # import paho.mqtt.client as mqtt
 # import paho.mqtt.publish as publish
 
@@ -16,6 +16,19 @@ def check_internet():
         internet_status = 0
     return internet_status
 
+def check_wifi(): #Adding this thing sets up check_internet loop for failure. 
+# Coz what happens when wifi is connected now and then check_internet starts and then wifi is disconnected again.
+# Poor check_internet loop will never exit.
+# Unless I call check_wifi from within check_internet
+    ps = subprocess.Popen(['iwgetid'], stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+    try:
+        output = subprocess.check_output(('grep', 'ESSID'), stdin=ps.stdout)
+        print(output)
+    except subprocess.CalledProcessError:
+        print("No Wireless Networks Connected!")
+        return False
+    return True
+
 # def normal_mode():
 #     while True:
 #         check_internet()
@@ -32,10 +45,14 @@ def check_internet():
 if __name__ == "__main__":
     internet_status = check_internet()
     print(f"internet status = {internet_status}")
-    while True:
+    while check_wifi() == True:
         while internet_status == 0:
             internet_status = check_internet()
             time.sleep(5)
         else:
             internet_status = check_internet()
+            time.sleep(1)
+    else:
+        while check_wifi() == False:
+            check_wifi()
             time.sleep(1)

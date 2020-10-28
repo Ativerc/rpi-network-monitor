@@ -45,14 +45,14 @@ def check_wifi(): #Adding this thing sets up check_internet loop for failure.
 if __name__ == "__main__":
     internet_status = check_internet()
     print(f"internet status = {internet_status}")
-    while check_wifi() == True:
+    while check_wifi() == True: # Normal Mode: Wifi on, net on
         while internet_status == 0:
             internet_status = check_internet()
             time.sleep(5)
-        else:
+        else: # Net Failure mode: Wifi on, net off
             internet_status = check_internet()
             time.sleep(1)
-    else:
+    else:     # Wifi Failure Mode: wifi off, net off
         while check_wifi() == False:
             check_wifi()
             time.sleep(1)

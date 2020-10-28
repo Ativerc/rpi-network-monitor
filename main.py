@@ -15,6 +15,20 @@ greenled = digitalio.DigitalInOut(board.D27)
 blueled = digitalio.DigitalInOut(board.D22)
 redled.direction = blueled.direction = greenled.direction = digitalio.Direction.OUTPUT
 
+
+def set_status_led(status):
+    if status == "CON":
+        redled.value = False
+        greenled.value = True
+    if status == "DCON":
+        redled.value = True
+        greenled.value = False
+
+
+def activity_ledd():
+    pass
+
+
 def check_internet():
     internet_status = 0
     try:
@@ -58,12 +72,16 @@ def check_wifi(): #Adding this thing sets up check_internet loop for failure.
 if __name__ == "__main__":
     internet_status = check_internet()
     print(f"internet status = {internet_status}")
-    while check_wifi() == True: # Normal Mode: Wifi on, net on
-        while internet_status == 0:
+    while check_wifi() == True: # Wifi Check: ;Net: Unknown
+        while internet_status == 0: # Normal Mode: Wifi on, net on
             internet_status = check_internet()
+            #blink activity led
+            set_status_led("CON")
             time.sleep(5)
         else: # Net Failure mode: Wifi on, net off
             internet_status = check_internet()
+            #blink activity led
+            set_status_led("DCON")
             time.sleep(1)
     else:     # Wifi Failure Mode: wifi off, net off
         while check_wifi() == False:

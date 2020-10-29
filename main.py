@@ -56,6 +56,10 @@ def check_wifi(): #Adding this thing sets up check_internet loop for failure.
         return False
     return True
 
+def check_which_interface():
+    pass
+
+
 # def normal_mode():
 #     while True:
 #         check_internet()

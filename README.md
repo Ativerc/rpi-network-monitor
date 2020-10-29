@@ -12,6 +12,12 @@ This project can be helpful for realising that the Internet is down before my de
 aimed at running on a Raspberry Pi so that I can use LEDs connected to its GPIOs for informing humans around it about the network status. I will add an API so
 the machines on my network can use this as well.
 
+## To Do:
+[x] ~~Check Wifi Status~~
+[x] ~~Add STATUS LED Support~~
+[ ] Check which network interface the device is connected to.  
+[ ] Add ACTIVITY LED Support
+
 ## About the name:
 The name comes from TV show which is famous for "Enhance! Enhance! Enchance!" phrase. Kidding! The name comes from Microsoft's 
 Network Connection Status Indicator tool for Windows based systems. Some details about Microsoft's NCSI can be found [here](https://support.microsoft.com/en-us/help/4494446/an-internet-explorer-or-edge-window-opens-when-your-computer-connects)

@@ -12,6 +12,14 @@ This project can be helpful for realising that the Internet is down before my de
 aimed at running on a Raspberry Pi so that I can use LEDs connected to its GPIOs for informing humans around it about the network status. I will add an API so
 the machines on my network can use this as well.
 
+LED Connection PINOUT for RPi:
+* Activity LED:
+  * RED: GPIO17
+  * GREEN: GPIO27
+  * BLUE: GPIO22 [Not used. But connected just in case.]
+* Status LED:
+  * YELLOW: GPIO18
+
 ## To Do:
 * [x] ~~Check Wifi Status~~
 * [x] ~~Add STATUS LED Support~~

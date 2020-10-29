@@ -60,18 +60,6 @@ def check_which_interface():
     pass
 
 
-# def normal_mode():
-#     while True:
-#         check_internet()
-#         time.sleep(5)
-
-# def net_failure():
-#     internet_status = 1
-#     while internet_status != 0:
-#         internet_status = check_internet()
-#         time.sleep(1)
-#     return internet_status
-
 
 if __name__ == "__main__":
     try:

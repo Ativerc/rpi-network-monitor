@@ -25,7 +25,9 @@ the machines on my network can use this as well.
 * [x] ~~Add STATUS LED Support~~
 * [ ] Check which network interface the device is connected to.  
 * [ ] Add ACTIVITY LED Support
+* [ ] Add MQTT support (direnv for constants)
+* [ ] Add logging
+* [ ] Fix:
+  * [ ] The stdout
+  * [ ] The timings for ACTIVITY LED and STATUS LED
 
-## About the name:
-The name comes from TV show which is famous for "Enhance! Enhance! Enchance!" phrase. Kidding! The name comes from Microsoft's 
-Network Connection Status Indicator tool for Windows based systems. Some details about Microsoft's NCSI can be found [here](https://support.microsoft.com/en-us/help/4494446/an-internet-explorer-or-edge-window-opens-when-your-computer-connects)

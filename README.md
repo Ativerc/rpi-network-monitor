@@ -13,10 +13,10 @@ aimed at running on a Raspberry Pi so that I can use LEDs connected to its GPIOs
 the machines on my network can use this as well.
 
 ## To Do:
-[x] ~~Check Wifi Status~~
-[x] ~~Add STATUS LED Support~~
-[ ] Check which network interface the device is connected to.  
-[ ] Add ACTIVITY LED Support
+* [x] ~~Check Wifi Status~~
+* [x] ~~Add STATUS LED Support~~
+* [ ] Check which network interface the device is connected to.  
+* [ ] Add ACTIVITY LED Support
 
 ## About the name:
 The name comes from TV show which is famous for "Enhance! Enhance! Enchance!" phrase. Kidding! The name comes from Microsoft's 

@@ -1,4 +1,4 @@
-# my-ncsi
+# rpi-network-monitor
 
 This script/project aims to build a monitoring system for the Network Status and the Internet Status of the network that its running on. 
 

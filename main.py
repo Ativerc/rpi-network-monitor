@@ -1,4 +1,4 @@
-import subprocess, time, logging
+import subprocess, time, logging, os
 
 import board
 import digitalio
@@ -8,12 +8,12 @@ import RPi.GPIO as GPIO
 
 
 #LED SETUP:
-activity_led = digitalio.DigitalInOut(board.D18)
-activity_led.direction = digitalio.Direction.OUTPUT
+activityled = digitalio.DigitalInOut(board.D18)
 redled = digitalio.DigitalInOut(board.D17)
 greenled = digitalio.DigitalInOut(board.D27)
 blueled = digitalio.DigitalInOut(board.D22)
-redled.direction = blueled.direction = greenled.direction = digitalio.Direction.OUTPUT
+redled.direction = blueled.direction = greenled.direction = activityled.direction = digitalio.Direction.OUTPUT
+
 
 
 def set_status_led(status):
@@ -25,20 +25,23 @@ def set_status_led(status):
         greenled.value = False
 
 
-def activity_ledd():
-    pass
+def activityled_blink(timing):
+    activityled.value = True
+    time.sleep(timing)
+    activityled.value = False
+
 
 
 def check_internet():
     internet_status = 0
     try:
         subprocess.check_call(['ping 8.8.8.8 -c1 -W1'], shell=True)
+        activityled_blink(0.3)
     except subprocess.CalledProcessError as calledexception:
+        activityled_blink(0.3)
         print(f"{calledexception} Couldn't ping. Possible Internal Network or Internet Connection Error!\n\n")
         return calledexception.returncode
-        # publish.single("main/internet/status", payload="NetPing Failure. Network/Internet Error.", qos=1, retain=True)
     else:
-        # publish.single("main/internet/status", payload="NetPing Success. Network and Internet OK", qos=1, retain=True)
         print("Network and Internet OK!\n")
         internet_status = 0
     return internet_status
@@ -60,7 +63,6 @@ def check_which_interface():
     pass
 
 
-
 if __name__ == "__main__":
     try:
         internet_status = check_internet()
@@ -70,11 +72,13 @@ if __name__ == "__main__":
                 internet_status = check_internet()
                 #blink activity led
                 set_status_led("CON")
+                # publish.single("main/internet/status", payload="NETWORK&INTERNET OK", qos=1, retain=True)
                 time.sleep(5)
             else: # Net Failure mode: Wifi on, net off
                 internet_status = check_internet()
                 #blink activity led
                 set_status_led("DCON")
+                # publish.single("main/internet/status", payload="NETWORK/INTERNET ERROR", qos=1, retain=True)
                 time.sleep(1)
         else:     # Wifi Failure Mode: wifi off, net off
             while check_wifi() == False:

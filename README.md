@@ -29,5 +29,7 @@ the machines on my network can use this as well.
 * [ ] Add logging
 * [ ] Fix:
   * [ ] The stdout
+  * [ ] Standardize STATUS CODES to be sent over MQTT
   * [ ] The timings for ACTIVITY LED and STATUS LED
+  * [ ] MQTT topic names for network status and device status
 

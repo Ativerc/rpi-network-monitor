@@ -48,13 +48,15 @@ def check_internet():
 
 def check_wifi(): #Adding this thing sets up check_internet loop for failure. 
 # Coz what happens when wifi is connected now and then check_internet starts and then wifi is disconnected again.
-# Poor check_internet loop will never exit.
+# Poor check_internet loop will never exit. # Okay This is wrong! :TODO:
 # Unless I call check_wifi from within check_internet
     ps = subprocess.Popen(['iwgetid'], stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
     try:
         output = subprocess.check_output(('grep', 'ESSID'), stdin=ps.stdout)
+        activityled_blink(0.3)
         print(output)
     except subprocess.CalledProcessError:
+        activityled_blink(0.3)
         print("No Wireless Networks Connected!")
         return False
     return True

@@ -1,6 +1,5 @@
 import subprocess, time, logging, os
 
-import board
 import digitalio
 import RPi.GPIO as GPIO
 # import paho.mqtt.client as mqtt
@@ -8,12 +7,8 @@ import RPi.GPIO as GPIO
 
 
 #LED SETUP:
-activityled = digitalio.DigitalInOut(board.D18)
-redled = digitalio.DigitalInOut(board.D17)
-greenled = digitalio.DigitalInOut(board.D27)
-blueled = digitalio.DigitalInOut(board.D22)
-redled.direction = blueled.direction = greenled.direction = activityled.direction = digitalio.Direction.OUTPUT
-
+from led_pinouts import redled, blueled, greenled, yellowled
+redled.direction = blueled.direction = greenled.direction = yellowled.direction = digitalio.Direction.OUTPUT
 
 
 def set_status_led(status):
@@ -25,20 +20,24 @@ def set_status_led(status):
         greenled.value = False
 
 
-def activityled_blink(timing):
-    activityled.value = True
+def yellowled_blink(timing):
+    yellowled.value = True
     time.sleep(timing)
-    activityled.value = False
+    yellowled.value = False
 
-
+def blue_led(status):
+    if status == "W_CON":
+        blueled.value = True
+    elif status == "W_DCON":
+        blueled.value = False
 
 def check_internet():
     internet_status = 0
     try:
         subprocess.check_call(['ping 8.8.8.8 -c1 -W1'], shell=True)
-        activityled_blink(0.3)
+        yellowled_blink(0.3)
     except subprocess.CalledProcessError as calledexception:
-        activityled_blink(0.3)
+        yellowled_blink(0.3)
         print(f"{calledexception} Couldn't ping. Possible Internal Network or Internet Connection Error!\n\n")
         return calledexception.returncode
     else:
@@ -68,6 +67,7 @@ if __name__ == "__main__":
         internet_status = check_internet()
         print(f"internet status = {internet_status}")
         while check_wifi() == True: # Wifi Check: ;Net: Unknown
+            blue_led("W_CON")
             while internet_status == 0: # Normal Mode: Wifi on, net on
                 internet_status = check_internet()
                 #blink activity led
@@ -82,6 +82,7 @@ if __name__ == "__main__":
                 time.sleep(1)
         else:     # Wifi Failure Mode: wifi off, net off
             while check_wifi() == False:
+                blue_led("W_DCON")
                 check_wifi()
                 time.sleep(1)
     except KeyboardInterrupt:

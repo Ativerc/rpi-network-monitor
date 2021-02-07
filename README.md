@@ -36,6 +36,7 @@ the machines on my network can use this as well.
 * [ ] [Fix]Improve the messages to STDOUT
 * [ ] Run as a daemon (Already have figured it out, I want to improve the STDOUT before doing this)
 * [ ] Add logging
+* [ ] Add a way to print the default pinout, so endusers can easily connect the LEDs and get started.
 * [x] ~~Check Wifi Status~~
 * [x] ~~Add STATUS LED Support~~ 
 * [x] ~~Add WIFI LED Support~~

@@ -9,4 +9,4 @@ blueled = digitalio.DigitalInOut(board.D26)
 # Activity LED 
 yellowled = digitalio.DigitalInOut(board.D18)
 
-# How do i print these pinouts?
+# How do i print these pinouts over CLI for the user?

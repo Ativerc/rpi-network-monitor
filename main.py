@@ -45,10 +45,7 @@ def check_internet():
         internet_status = 0
     return internet_status
 
-def check_wifi(): #Adding this thing sets up check_internet loop for failure. 
-# Coz what happens when wifi is connected now and then check_internet starts and then wifi is disconnected again.
-# Poor check_internet loop will never exit.
-# Unless I call check_wifi from within check_internet
+def check_wifi(): 
     ps = subprocess.Popen(['iwgetid'], stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
     try:
         output = subprocess.check_output(('grep', 'ESSID'), stdin=ps.stdout)
@@ -72,13 +69,11 @@ if __name__ == "__main__":
                 internet_status = check_internet()
                 #blink activity led
                 set_status_led("CON")
-                # publish.single("main/internet/status", payload="NETWORK&INTERNET OK", qos=1, retain=True)
                 time.sleep(5)
             else: # Net Failure mode: Wifi on, net off
                 internet_status = check_internet()
                 #blink activity led
                 set_status_led("DCON")
-                # publish.single("main/internet/status", payload="NETWORK/INTERNET ERROR", qos=1, retain=True)
                 time.sleep(1)
         else:     # Wifi Failure Mode: wifi off, net off
             while check_wifi() == False:

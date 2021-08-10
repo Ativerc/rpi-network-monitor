@@ -12,8 +12,10 @@ blueled = digitalio.DigitalInOut(board.D26)
 
 
 def pinout_printer():
-	print(f"ACTIVITY LED PIN: {yellowled._pin}")
-	print(f"RED LED PIN: {redled._pin}")
-	print(f"GREEN LED PIN: {greenled._pin}")
-	print(f"BLUE LED PIN: {blueled._pin}")
+	print("ACTIVITY LED:")
+	print(f"  Yellow LED Pin: {yellowled._pin}")
+	print("STATUS LED:")
+	print(f"  Red LED Pin: {redled._pin}")
+	print(f"  Green LED Pin: {greenled._pin}")
+	print(f"  Blue LED Pin: {blueled._pin}")
 

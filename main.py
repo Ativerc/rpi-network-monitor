@@ -1,4 +1,4 @@
-import subprocess, time, logging, os
+import subprocess, time, argparse
 
 import digitalio
 import RPi.GPIO as GPIO
@@ -7,7 +7,7 @@ import RPi.GPIO as GPIO
 
 
 #LED SETUP:
-from led_pinouts import redled, blueled, greenled, yellowled
+from led_pinouts import redled, blueled, greenled, yellowled, pinout_printer
 redled.direction = blueled.direction = greenled.direction = yellowled.direction = digitalio.Direction.OUTPUT
 
 
@@ -57,6 +57,23 @@ def check_wifi():
 
 def check_which_interface():
     pass
+
+    
+
+# PARSER STUFF
+
+parser = argparse.ArgumentParser(description="Monitors the Internet status")
+parser.add_argument('--pinout', action='store_true')
+args = parser.parse_args()
+
+
+
+def testfun():
+    pinout_printer()
+
+if args.pinout == True:
+    testfun()
+    quit()
 
 
 if __name__ == "__main__":

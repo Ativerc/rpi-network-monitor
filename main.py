@@ -61,7 +61,7 @@ def check_which_interface():
 # PARSER STUFF
 
 parser = argparse.ArgumentParser(description="Monitors the Internet status")
-parser.add_argument('--pinout', action='store_true')
+parser.add_argument('--pinout', action='store_true', help="Prints out the pinouts to connect the LEDs to")
 args = parser.parse_args()
 
 

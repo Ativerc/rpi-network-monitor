@@ -58,8 +58,6 @@ def check_wifi():
 def check_which_interface():
     pass
 
-    
-
 # PARSER STUFF
 
 parser = argparse.ArgumentParser(description="Monitors the Internet status")

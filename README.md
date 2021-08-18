@@ -23,7 +23,7 @@ STATUS LED:
   Blue LED Pin: 26
 ```
 
-## Bugs:
+## Bugs/Issues/Feature Requests:
 See [Issues](https://github.com/Ativerc/rpi-network-monitor/issues)
 
 ## To Do:

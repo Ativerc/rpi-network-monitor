@@ -24,13 +24,7 @@ STATUS LED:
 ```
 
 ## Bugs:
-1. If the Wifi conks out, then the red led comes on, but even after the wifi connects and the net connection is established(both through the Ethernet and the Wifi), the red led stays on.
-   * Method to reproduce: pull out the wifi USB adapter.
-   * Possible Solution: Rewrite the entire code
-2. Stopping the service using `systemctl --user stop rpi-network-monitor.service` leaves the Status LEDs(Wifi and iNet) to be on. I suspect even the Status LED is pulled down low.
-   * Possible reason: The RPI.GPIO's cleanup() is not being called when I use systemctl to stop the service.
-3. The service writes a bunch of logs to syslog every 5 or 1 seconds depending on internet status. This many writes is detrimental for the life of the RPI's SD card.
-   * Possible Solution: Move the writing of the logs to the Flashdrive 
+See [Issues](https://github.com/Ativerc/rpi-network-monitor/issues)
 
 ## To Do:
 * [ ] Check which network interface the device is connected to.

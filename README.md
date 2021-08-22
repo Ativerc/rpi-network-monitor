@@ -1,6 +1,6 @@
 # rpi-network-monitor
 
-This script/project aims to build a monitoring system for the Network Status and the Internet Status of the network that its running on. 
+This project aims to build a monitoring and reporting system for the Network and Internet Status.
 
 ## More details:
 The personal devices we use have their own network diagnostics tools built in. And the apps running on those devices use those tools for a confirmed network
@@ -12,7 +12,8 @@ This project can be helpful for realising that the Internet is down before my de
 aimed at running on a Raspberry Pi so that I can use LEDs connected to its GPIOs for informing humans around it about the network status. I will add an API so
 the machines on my network can use this as well.
 
-## LED Connection PINOUT for RPi:
+## Setup
+### LED Connection PINOUT for RPi:
 ```
 $ python main.py --pinout
 ACTIVITY LED:
@@ -22,6 +23,11 @@ STATUS LED:
   Green LED Pin: 27
   Blue LED Pin: 26
 ```
+
+### Installation:
+
+
+## Usage:
 
 ## Bugs/Issues/Feature Requests:
 See [Issues](https://github.com/Ativerc/rpi-network-monitor/issues)

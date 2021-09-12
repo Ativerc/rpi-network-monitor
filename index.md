@@ -1,37 +1,51 @@
-## Welcome to GitHub Pages
+## rpi-network-monitor
 
-You can use the [editor on GitHub](https://github.com/Ativerc/rpi-network-monitor/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+This project aims to build a monitoring and reporting system for the Network and Internet Status.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+## More details:
+The personal devices we use have their own network diagnostics tools built in. And the apps running on those devices use those tools for a confirmed network
+status.
 
-### Markdown
+This project aims to do the same for the entire network, where instead of apps, there are people and devices across multiple rooms and floors. 
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+This project can be helpful for realising that the Internet is down before my devices or someone in my house complains about the outage. The script is
+aimed at running on a Raspberry Pi so that I can use LEDs connected to its GPIOs for informing humans around it about the network status. I will add an API so
+the machines on my network can use this as well.
 
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+## Setup
+### LED Connection PINOUT for RPi:
+```
+$ python main.py --pinout
+ACTIVITY LED:
+  Yellow LED Pin: 18
+STATUS LED:
+  Red LED Pin: 17
+  Green LED Pin: 27
+  Blue LED Pin: 26
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+### Installation:
 
-### Jekyll Themes
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Ativerc/rpi-network-monitor/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+## Usage:
 
-### Support or Contact
+## Bugs/Issues/Feature Requests:
+See [Issues](https://github.com/Ativerc/rpi-network-monitor/issues)
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+## To Do:
+* [ ] Check which network interface the device is connected to.
+* [ ] Rewrite the code to support any network interface its connected to.
+* [ ] [Fix]Improve the messages to STDOUT
+* [ ] Run as a daemon (Already have figured it out, I want to improve the STDOUT before doing this)
+  * [x] Running as a User Service
+* [ ] Add logging
+* [x] Add a way to print the default pinout, so endusers can easily connect the LEDs and get started.
+* [x] Check Wifi Status
+* [x] Add STATUS LED Support
+* [x] Add WIFI LED Support
+* [x] Add ACTIVITY LED Support
+* [ ] Add MQTT support (direnv for constants)
+* [ ] Fix:
+  * [ ] Standardize STATUS CODES to be sent over MQTT
+  * [ ] The timings for ACTIVITY LED and STATUS LED
+  * [ ] MQTT topic names for network status and device status

@@ -25,9 +25,14 @@ STATUS LED:
 ```
 
 ### Installation:
-
+* Clone the repo on your RPi using this command: `git clone https://github.com/Ativerc/rpi-network-monitor.git`
+* `cd` into the downloaded repo folder.
+* Setup a venv environment
+* Install the requrirements from requirements.txt
 
 ## Usage:
+* Read the help message
+* Connect the LEDs to the RPI's GPIO as per the pinout
 
 ## Bugs/Issues/Feature Requests:
 See [Issues](https://github.com/Ativerc/rpi-network-monitor/issues)

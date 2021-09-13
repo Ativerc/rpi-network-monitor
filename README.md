@@ -27,8 +27,9 @@ STATUS LED:
 ### Installation:
 * Clone the repo on your RPi using this command: `git clone https://github.com/Ativerc/rpi-network-monitor.git`
 * `cd` into the downloaded repo folder.
-* Setup a venv environment
-* Install the requrirements from requirements.txt
+* Setup an environment and activate it.
+* Install the requrirements from requirements.txt: `pip install -r requirements.txt`
+* Execute the `main.py` file.
 
 ## Usage:
 * Read the help message
